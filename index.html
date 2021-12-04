@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <!-- aframe-extras -->
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <!-- proxy-event -->
+        <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+        <!-- super hands -->
+        <script src="https://unpkg.com/super-hands@3.0.1/dist/super-hands.min.js"></script>
+        <!-- aframe-physics-extras -->
+        <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+        <!-- lookat -->
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <!-- Assets -->
+            <a-assets>
+                <img src="./textures/checkerboard.png" id="base">
+            </a-assets>
+            <!-- Controller -->
+            <a-entity laser-controls="
+                hand:right;
+                color:red;"
+            ></a-entity>
+            <!-- Cursor -->
+            <a-entity camera look-controls wasd-controls position="-2 2 0" id="cam">
+                <a-cursor></a-cursor>
+            </a-entity>
+            <!-- Env Objects -->
+            <!-- Lighting -->
+            <a-entity
+                light="
+                    type: ambient;
+                    color: #696969;
+                "
+            >
+            </a-entity>
+            <a-entity
+                light="
+                    type: point;
+                    color: #ffffff;
+                    intensity: 0.6;
+                    castShadow: true;
+                "
+                position="0 18 6"
+            >
+            </a-entity>
+            <!-- Planes -->
+            <a-entity
+                geometry="
+                    primitive: plane;
+                    width: 24;
+                    height: 24;
+                "
+                material="src: #base; color: #ababab;"
+                rotation="-90 0 0"
+                position="0 0 -6"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: plane;
+                    width: 24;
+                    height: 12;
+                "
+                material="color: #ababab"
+                rotation="0 0 0"
+                position="0 6 -18"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: plane;
+                    width: 24;
+                    height: 12;
+                "
+                material="color: #ababab"
+                rotation="0 -180 0"
+                position="0 6 6"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: plane;
+                    width: 24;
+                    height: 12;
+                "
+                material="color: #ababab"
+                rotation="0 90 0"
+                position="-12 6 -6"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: plane;
+                    width: 24;
+                    height: 12;
+                "
+                material="color: #ababab"
+                rotation="0 -90 0"
+                position="12 6 -6"
+            >
+            </a-entity>
+            <!-- Boxes -->
+            <a-entity
+                geometry="
+                    primitive: box; 
+                    width: 2;
+                    height: 1.5;
+                    depth: 6;
+                "
+                material="color: #ababab"
+                rotation="0 -90 0"
+                position="-9 0.75 -6"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: box; 
+                    width: 2;
+                    height: 1.5;
+                    depth: 6;
+                "
+                material="color: #ababab"
+                rotation="0 -90 0"
+                position="5 0.75 -6"
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: box; 
+                    width: 24;
+                    height: 4;
+                    depth: 4;
+                "
+                material="color: #ababab"
+                rotation="0 -90 0"
+                position="10 2 -6"
+            >
+            </a-entity>
+            <!-- Text -->
+            <a-entity
+                text="
+                    value: Spider's Den;
+                    color: #fff;
+                    align: center;
+                "
+                scale="25 25 25"
+                position="0 8 -17;"
+                geometry="
+                    primitive: plane;
+                    width: auto;
+                    height: auto;
+                "
+                material="color: #696969;"
+            ></a-entity>
+            <!-- Test Targets -->
+            <a-entity
+                geometry="
+                    primitive: sphere; 
+                    radius: 0.75
+                "
+                material="color: #0FF"
+                rotation="0 0 0"
+                position="-2 2 -8"
+                animation__red="
+                    property: components.material.material.color;
+                    type: color;
+                    to: red;
+                    dur: 0;
+                    startEvents: mousedown;
+                "
+                animation__cyan="
+                    property: components.material.material.color;
+                    type: color;
+                    to: #0ff;
+                    dur: 1000;
+                    startEvents: mouseleave;
+                "
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: sphere; 
+                    radius: 0.75
+                "
+                material="color: #0FF"
+                rotation="0 0 0"
+                position="6 6 -12"
+                animation__up="
+                    property: position;
+                    to: 4 8 -12;
+                    startEvents: up;
+                "
+            >
+            </a-entity>
+            <a-entity
+                geometry="
+                    primitive: sphere; 
+                    radius: 0.75
+                "
+                material="color: #0FF"
+                rotation="0 0 0"
+                position="-10 4 -16"
+            >
+            </a-entity>
+        </a-scene>
+        <script src="scripts/objectTest.js">
+        </script>
+    </body>
+</html>
