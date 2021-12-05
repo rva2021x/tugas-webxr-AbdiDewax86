@@ -17,6 +17,7 @@
             <!-- Assets -->
             <a-assets>
                 <img src="./textures/checkerboard.png" id="base">
+                <a-asset-item id="gun" src="./models/scene.gltf"></a-asset-item>
             </a-assets>
             <!-- Controller -->
             <a-entity laser-controls="
@@ -26,6 +27,7 @@
             <!-- Cursor -->
             <a-entity camera look-controls wasd-controls position="-2 2 0" id="cam">
                 <a-cursor></a-cursor>
+                <!--<a-gltf-model src="#gun" position="0 -0.2 -0.75" rotation="0 90 0" scale="0.1 0.1 0.1"></a-gltf-model>-->
             </a-entity>
             <!-- Env Objects -->
             <!-- Lighting -->
@@ -53,7 +55,7 @@
                     width: 24;
                     height: 24;
                 "
-                material="src: #base; color: #ababab;"
+                material="src: #base; repeat: 6 6; color: #ababab;"
                 rotation="-90 0 0"
                 position="0 0 -6"
             >
@@ -64,7 +66,7 @@
                     width: 24;
                     height: 12;
                 "
-                material="color: #ababab"
+                material="src: #base; repeat: 6 3; color: #ababab"
                 rotation="0 0 0"
                 position="0 6 -18"
             >
@@ -75,7 +77,7 @@
                     width: 24;
                     height: 12;
                 "
-                material="color: #ababab"
+                material="src: #base; repeat: 6 3; color: #ababab"
                 rotation="0 -180 0"
                 position="0 6 6"
             >
@@ -86,7 +88,7 @@
                     width: 24;
                     height: 12;
                 "
-                material="color: #ababab"
+                material="src: #base; repeat: 6 3; color: #ababab"
                 rotation="0 90 0"
                 position="-12 6 -6"
             >
@@ -97,7 +99,7 @@
                     width: 24;
                     height: 12;
                 "
-                material="color: #ababab"
+                material="src: #base; repeat: 6 3; color: #ababab"
                 rotation="0 -90 0"
                 position="12 6 -6"
             >
@@ -134,7 +136,7 @@
                     height: 4;
                     depth: 4;
                 "
-                material="color: #ababab"
+                material="src: #base; repeat: 6 1; color: #ababab"
                 rotation="0 -90 0"
                 position="10 2 -6"
             >
@@ -171,6 +173,13 @@
                     dur: 0;
                     startEvents: mousedown;
                 "
+                animation__highlight="
+                    property: components.material.material.color;
+                    type: color;
+                    to: #0aa;
+                    dur: 0;
+                    startEvents: mouseenter;
+                "
                 animation__cyan="
                     property: components.material.material.color;
                     type: color;
@@ -180,33 +189,8 @@
                 "
             >
             </a-entity>
-            <a-entity
-                geometry="
-                    primitive: sphere; 
-                    radius: 0.75
-                "
-                material="color: #0FF"
-                rotation="0 0 0"
-                position="6 6 -12"
-                animation__up="
-                    property: position;
-                    to: 4 8 -12;
-                    startEvents: up;
-                "
-            >
-            </a-entity>
-            <a-entity
-                geometry="
-                    primitive: sphere; 
-                    radius: 0.75
-                "
-                material="color: #0FF"
-                rotation="0 0 0"
-                position="-10 4 -16"
-            >
-            </a-entity>
         </a-scene>
-        <script src="scripts/objectTest.js">
+        <script src="scripts/sphere.js">
         </script>
     </body>
 </html>
