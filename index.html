@@ -25,7 +25,7 @@
                 color:red;"
             ></a-entity>
             <!-- Cursor -->
-            <a-entity camera look-controls wasd-controls position="-2 2 0" id="cam">
+            <a-entity camera look-controls wasd-controls="acceleration:0" position="-2 2 0" id="cam">
                 <a-cursor></a-cursor>
                 <!--<a-gltf-model src="#gun" position="0 -0.2 -0.75" rotation="0 90 0" scale="0.1 0.1 0.1"></a-gltf-model>-->
             </a-entity>
@@ -149,7 +149,7 @@
                     align: center;
                 "
                 scale="25 25 25"
-                position="0 8 -17;"
+                position="0 10 -17;"
                 geometry="
                     primitive: plane;
                     width: auto;
@@ -157,38 +157,46 @@
                 "
                 material="color: #696969;"
             ></a-entity>
-            <!-- Test Targets -->
             <a-entity
+                id="score"
+                text="
+                    value: Score: ;
+                    color: #fff;
+                    align: center;
+                "
+                scale="20 20 20"
+                position="0 7 -17;"
                 geometry="
-                    primitive: sphere; 
-                    radius: 0.75
+                    primitive: plane;
+                    width: auto;
+                    height: auto;
                 "
-                material="color: #0FF"
-                rotation="0 0 0"
-                position="-2 2 -8"
-                animation__red="
-                    property: components.material.material.color;
-                    type: color;
-                    to: red;
-                    dur: 0;
-                    startEvents: mousedown;
-                "
-                animation__highlight="
-                    property: components.material.material.color;
-                    type: color;
-                    to: #0aa;
-                    dur: 0;
-                    startEvents: mouseenter;
-                "
-                animation__cyan="
-                    property: components.material.material.color;
-                    type: color;
-                    to: #0ff;
-                    dur: 1000;
-                    startEvents: mouseleave;
-                "
-            >
-            </a-entity>
+                material="color: #696969;"
+            ></a-entity>
+            <!-- Buttons -->
+            <a-entity
+            text="
+                value: Toggle Gun Model;
+                color: #fff;
+                align: center;
+            "
+            scale="4 4 4"
+            position="-4 1 -1;"
+            rotation="0 90 0"
+            geometry="
+                primitive: plane;
+                width: auto;
+                height: auto;
+            "
+            material="color: #696969;"
+            animation__hover="
+                property: components.material.material.color;
+                type: color;
+                to: red;dur: 0;
+                startEvents: mousedown;
+            "
+            ></a-entity>
+            <!-- Test Targets -->
         </a-scene>
         <script src="scripts/sphere.js">
         </script>
