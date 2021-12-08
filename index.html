@@ -18,6 +18,10 @@
             <a-assets>
                 <img src="./textures/checkerboard.png" id="base">
                 <a-asset-item id="gun" src="./models/scene.gltf"></a-asset-item>
+                <audio id="sfxhit" src="./sounds/minecraftxp.mp3"></audio>
+                <audio id="sfxhover" src="./sounds/click.wav"></audio>
+                <audio id="sfxselect" src="./sounds/select.wav"></audio>
+                <audio id="sfxreload" src="./sounds/reload.wav"></audio>
             </a-assets>
             <!-- Controller -->
             <a-entity laser-controls="
@@ -26,8 +30,8 @@
             ></a-entity>
             <!-- Cursor -->
             <a-entity camera look-controls wasd-controls="acceleration:0" position="-2 2 0" id="cam">
-                <a-cursor></a-cursor>
-                <!--<a-gltf-model src="#gun" position="0 -0.2 -0.75" rotation="0 90 0" scale="0.1 0.1 0.1"></a-gltf-model>-->
+                <a-cursor id="cursor"></a-cursor>
+                <a-gltf-model id="gunmodel" src="#gun" position="0 -0.2 -0.75" rotation="0 90 0" scale="0.1 0.1 0.1" visible="false"></a-gltf-model>
             </a-entity>
             <!-- Env Objects -->
             <!-- Lighting -->
@@ -175,30 +179,40 @@
             ></a-entity>
             <!-- Buttons -->
             <a-entity
+            id="guntoggle"
             text="
-                value: Toggle Gun Model;
+                value: Use Pew Pew;
                 color: #fff;
                 align: center;
             "
-            scale="4 4 4"
-            position="-4 1 -1;"
+            scale="1 1 1"
+            position="-2 0.75 -2;"
             rotation="0 90 0"
             geometry="
-                primitive: plane;
-                width: auto;
-                height: auto;
+                primitive: circle;
+                width: 2;
+                radius: 0.15;
             "
             material="color: #696969;"
             animation__hover="
                 property: components.material.material.color;
                 type: color;
-                to: red;dur: 0;
-                startEvents: mousedown;
+                to: #ababab;
+                dur: 0;
+                startEvents: mouseenter;
             "
+            animation__leave="
+                property: components.material.material.color;
+                type: color;
+                to: #696969;
+                dur: 500;
+                startEvents: mouseleave;
+            "
+            look-at="#cam"
             ></a-entity>
             <!-- Test Targets -->
         </a-scene>
-        <script src="scripts/sphere.js">
+        <script src="scripts/gameManager.js">
         </script>
     </body>
 </html>
